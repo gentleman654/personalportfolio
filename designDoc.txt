@@ -1,0 +1,263 @@
+Love this. Let’s design it like a recruiter-first product: stupid-simple, fast, and thumb-friendly.
+
+The recruiter journeys (optimize for skim)
+
+30-second skim (mobile): See your name, role, 1-line value prop, 2 CTAs: Resume + Email/LinkedIn. One “Top 3 Projects” row with impact metrics.
+
+2-minute skim: Scroll reveals Experience timeline (titles, companies, dates) + Skills summary (clusters, not tag soup) + one case study.
+
+5-minute deep dive: Dedicated project pages (STAR: Situation → Task → Actions → Results) with a short demo/GIF, stack, and your specific contributions.
+
+Information architecture (keep it tiny)
+
+Top nav (max 4 items): Home · Work · Experience · Contact + a right-aligned Resume button.
+Routes:
+
+/ (Home): hero + top projects + quick highlights.
+
+/work: grid of projects (filter by type).
+
+/work/[slug]: case study pages.
+
+/experience: roles timeline + selected achievements.
+
+/contact: short form + direct links.
+
+/resume.pdf: static file.
+
+Must-have components (and what goes in them)
+
+Navbar (sticky, 56–64px tall; large tap targets)
+
+Logo/Name (links to /)
+
+Links (collapse to a Hamburger on xs)
+
+CTA button “Resume”
+
+Hero
+
+H1: “Manas Gandotra — Full-stack Developer”
+
+1-liner: “I ship data-driven web apps that load fast and tell a story.”
+
+Two buttons: View Resume (primary) · Email Me (secondary)
+
+ProjectsSpotlight (3 cards)
+
+Title, one-sentence impact, 2–3 metrics (e.g., “-38% TTI”, “+22% conversion”), stack chips.
+
+Buttons: Case Study · Code (if public)
+
+ExperienceTimeline
+
+Company, title, dates, 2–3 bullet wins starting with verbs, each with a metric.
+
+SkillsSummary
+
+Grouped: Frontend (Next.js, Bootstrap), Backend (Node, Express), DB (Postgres, Mongo), Cloud/Tools (Vercel, Docker, GitHub Actions).
+
+Contact
+
+“I reply within 24–48h” + buttons (Email, LinkedIn, GitHub) + tiny form.
+
+Footer
+
+Copyright, location, quick links.
+
+Mobile UX rules (non-negotiable)
+
+Readable: base 16–18px, line-height ≥1.6, headings 1.25–1.75×.
+
+Tap targets: 44×44px min; buttons full-width on xs.
+
+Spacing: 24–32px vertical rhythm.
+
+Images: use Next <Image />; avoid heavy carousels/GIFs (convert to MP4).
+
+No scroll-jacking. No clever gestures. Plain scroll wins.
+
+Next.js + Bootstrap setup (simple + reliable)
+
+Use App Router. Install Bootstrap for styles; you can skip React-Bootstrap for now.
+
+Import CSS once in app/layout.tsx.
+
+Use Bootstrap utilities (container, row, col, gap-*, py-*, btn) for fast layout.
+
+Minimal file tree
+/app
+  /work
+    /[slug]/page.tsx
+    page.tsx
+  /experience/page.tsx
+  /contact/page.tsx
+  layout.tsx
+  page.tsx
+/components
+  Navbar.tsx
+  ProjectCard.tsx
+  Timeline.tsx
+  Skills.tsx
+  Footer.tsx
+/data
+  projects.ts
+  experience.ts
+/public
+  resume.pdf
+
+Import Bootstrap once
+// app/layout.tsx
+import 'bootstrap/dist/css/bootstrap.min.css';
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="bg-light text-body">{children}</body>
+    </html>
+  );
+}
+
+Sticky Navbar (Bootstrap classes only)
+// components/Navbar.tsx
+import Link from "next/link";
+
+export default function Navbar() {
+  return (
+    <nav className="navbar navbar-expand-md bg-white border-bottom sticky-top">
+      <div className="container">
+        <Link className="navbar-brand fw-semibold" href="/">Manas</Link>
+
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" className="collapse navbar-collapse">
+          <ul className="navbar-nav me-auto gap-2">
+            <li className="nav-item"><Link className="nav-link" href="/work">Work</Link></li>
+            <li className="nav-item"><Link className="nav-link" href="/experience">Experience</Link></li>
+            <li className="nav-item"><Link className="nav-link" href="/contact">Contact</Link></li>
+          </ul>
+          <a className="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+Project data (so cards are driven by content, not hardcoded)
+// data/projects.ts
+export type Project = {
+  slug: string;
+  title: string;
+  oneLiner: string;
+  metrics: string[];    // ["-38% TTI", "+22% conv."]
+  stack: string[];      // ["Next.js", "MongoDB"]
+  links?: { demo?: string; code?: string };
+  cover?: string;       // /images/foo.png
+};
+export const projects: Project[] = [
+  {
+    slug: "trend-analyzer",
+    title: "Crypto & Stock Trend Analyzer",
+    oneLiner: "Unified price feeds + LLM news context in <24h window.",
+    metrics: ["~1.2s FCP", "Realtime via websockets"],
+    stack: ["Next.js", "Node", "Redis", "Vercel"],
+    links: { demo: "#", code: "https://github.com/..." },
+    cover: "/images/trend.png"
+  },
+  // add two more
+];
+
+Project card
+// components/ProjectCard.tsx
+import Link from "next/link";
+import type { Project } from "@/data/projects";
+
+export default function ProjectCard({ p }: { p: Project }) {
+  return (
+    <div className="card h-100 shadow-sm">
+      {p.cover && <img src={p.cover} className="card-img-top" alt={p.title} />}
+      <div className="card-body d-flex flex-column">
+        <h3 className="h5">{p.title}</h3>
+        <p className="text-secondary mb-2">{p.oneLiner}</p>
+        <ul className="small mb-2">
+          {p.metrics.map(m => <li key={m}>{m}</li>)}
+        </ul>
+        <div className="d-flex flex-wrap gap-2 mb-3">
+          {p.stack.map(s => <span key={s} className="badge text-bg-light border">{s}</span>)}
+        </div>
+        <div className="mt-auto d-flex gap-2">
+          <Link href={`/work/${p.slug}`} className="btn btn-outline-primary btn-sm">Case Study</Link>
+          {p.links?.code && <a href={p.links.code} className="btn btn-outline-secondary btn-sm" target="_blank">Code</a>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Home (hero + 3 spotlight projects)
+// app/page.tsx
+import Navbar from "@/components/Navbar";
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
+import Footer from "@/components/Footer";
+
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+      <main className="container py-5">
+        <section className="py-4">
+          <h1 className="display-5 fw-bold">Manas Gandotra</h1>
+          <p className="lead">I build fast, clean, recruiter-friendly web apps.</p>
+          <div className="d-flex gap-2">
+            <a className="btn btn-primary" href="/resume.pdf" target="_blank">View Resume</a>
+            <a className="btn btn-outline-secondary" href="mailto:you@example.com">Email Me</a>
+          </div>
+        </section>
+
+        <section className="py-4">
+          <h2 className="h4 mb-3">Selected Work</h2>
+          <div className="row g-3">
+            {projects.slice(0,3).map(p => (
+              <div className="col-12 col-md-6 col-lg-4" key={p.slug}>
+                <ProjectCard p={p} />
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+Content rules that impress recruiters
+
+Lead with impact + scale (numbers) before stack.
+
+For each role/project, include your contribution (not “the team built…”).
+
+Keep project list to 3–6; archive the rest.
+
+Make Resume reachable in one tap anywhere (top CTA + footer).
+
+Put location/timezone and availability in the footer.
+
+A11y & SEO quick wins
+
+Proper HTML landmarks, <h1> only once per page.
+
+Visible focus rings; :focus-visible respected.
+
+Meta: title (60 chars), description (155), Open Graph, canonical.
+
+JSON-LD Person schema + Project pages with CreativeWork.
+
+Lighthouse targets: Perf ≥90, A11y ≥95.
+
+Analytics & forms (optional, easy)
+
+Use a light analytics (e.g., Plausible) or none.
+
+Contact form posts to /api/contact and emails you (or hits a webhook); always show a direct email link as fallback.
