@@ -30,11 +30,8 @@ export default function Home() {
             >
               View Resume
             </a>
-            <a
-              className="btn btn-outline-secondary btn-lg"
-              href="mailto:manas@example.com"
-            >
-              Email Me
+            <a className="btn btn-outline-secondary btn-lg" href="/contact">
+              Contact Me
             </a>
           </div>
         </section>
@@ -42,11 +39,11 @@ export default function Home() {
         <section className="py-4">
           <div className="row g-4 text-center">
             <div className="col-12 col-md-4">
-              <h3 className="h4 text-primary mb-1">3+ Years</h3>
+              <h3 className="h4 text-primary mb-1">2+ Years</h3>
               <p className="text-secondary mb-0">Full-stack Development</p>
             </div>
             <div className="col-12 col-md-4">
-              <h3 className="h4 text-primary mb-1">15+ Projects</h3>
+              <h3 className="h4 text-primary mb-1">4+ Projects</h3>
               <p className="text-secondary mb-0">Shipped to Production</p>
             </div>
             <div className="col-12 col-md-4">
