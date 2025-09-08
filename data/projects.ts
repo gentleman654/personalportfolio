@@ -3,33 +3,34 @@ export type Project = {
   slug: string;
   title: string;
   oneLiner: string;
-  metrics: string[]; // Impact numbers that recruiters love
-  stack: string[]; // Tech stack chips
+  metrics: string[];
+  stack: string[];
   links?: {
     demo?: string;
     code?: string;
   };
-  cover?: string; // Project image
-  featured?: boolean; // Show on homepage
+  cover?: string;
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    slug: 'expense-tracker',
-    title: 'Smart Expense Tracker',
+    slug: 'exhibit-explorer',
+    title: 'Exhibit Explorer',
     oneLiner:
-      'AI-powered expense categorization with real-time analytics dashboard.',
+      'Fetches cultural exhibit data from a public API with save-to-favorites support.',
     metrics: [
-      '87% categorization accuracy',
-      '3x faster than manual entry',
-      '500+ users',
+      '99 Performance, 100 Accessibility (Lighthouse)',
+      '98 Best Practices, 82 SEO',
+      'Fetches exhibit data in ~180ms via public API',
+      'Supports 500+ exhibits with local favorites',
     ],
-    stack: ['React', 'Node.js', 'PostgreSQL', 'OpenAI API'],
+    stack: ['Next.js', 'Node.js', 'REST API', 'Bootstrap'],
     links: {
-      demo: 'https://expense-demo.vercel.app',
-      code: 'https://github.com/manasgandy/expense-tracker',
+      demo: 'https://exhibit-explorer.vercel.app/',
+      code: 'https://github.com/gentleman654/exhibitExplorer',
     },
-    cover: '/images/expense-tracker.jpg',
+    cover: '/images/exhibit.png',
     featured: true,
   },
   {
