@@ -34,7 +34,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'portfolio-builder',
+    slug: 'cli-demo',
     title: 'Developer Portfolio Builder',
     oneLiner:
       'No-code portfolio generator for developers with GitHub integration.',
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     ],
     stack: ['Next.js', 'GitHub API', 'Tailwind', 'Vercel'],
     links: {
-      demo: 'https://dev-portfolios.com',
+      
       code: 'https://github.com/manasgandy/portfolio-builder',
     },
     cover: '/images/portfolio-builder.jpg',

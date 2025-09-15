@@ -1,11 +1,21 @@
 import { projects } from '@/data/projects';
 import { notFound } from 'next/navigation';
+import CLIDemo from '@/components/CLIDemo';
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) return notFound();
+  if (slug === "cli-demo") {
+    return (
+      <main className="container py-5">
+        <h1 className="display-5 mb-3">{project.title}</h1>
+        <p className="lead mb-4">{project.oneLiner}</p>
+        <CLIDemo />
+      </main>
+    );
+  }
 
   return (
     <main className="container py-5">
