@@ -34,19 +34,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'cli-demo',
-    title: 'Developer Portfolio Builder',
+    slug: 'Library-Management-System',
+    title: 'Library Management System',
     oneLiner:
-      'No-code portfolio generator for developers with GitHub integration.',
+      'A C++ console application for managing library operations.',
     metrics: [
-      '< 2min setup time',
-      '1200+ portfolios created',
-      '95% mobile score',
-    ],
-    stack: ['Next.js', 'GitHub API', 'Tailwind', 'Vercel'],
+    'Menu-driven interface with 5+ operations',
+    'Persistent file storage for library records',
+    'Organized into multiple classes for scalability',
+  ],
+    stack: ['C++', 'C'],
     links: {
-      
-      code: 'https://github.com/manasgandy/portfolio-builder',
+      code: 'https://github.com/gentleman654/Lib-Organiser',
     },
     cover: '/images/portfolio-builder.jpg',
     featured: true,
