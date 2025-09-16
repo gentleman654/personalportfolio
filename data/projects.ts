@@ -47,7 +47,7 @@ export const projects: Project[] = [
     links: {
       code: 'https://github.com/gentleman654/Lib-Organiser',
     },
-    cover: '/images/portfolio-builder.jpg',
+    cover: '/images/c++.png',
     featured: true,
   },
   {
