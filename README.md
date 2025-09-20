@@ -35,9 +35,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Contact Form with MongoDB + SendGrid
+## Contact Form with MongoDB + Gmail
 
-This project includes a contact form that stores messages in MongoDB and sends automatic replies via SendGrid.
+This project includes a contact form that stores messages in MongoDB and sends automatic replies via Gmail .
 
 ### Setup Instructions
 
