@@ -63,7 +63,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </a>
         )}
       </div>
-      {/* Add STAR breakdown, GIF/demo, and your contributions here */}
+      
     </main>
   );
 }
