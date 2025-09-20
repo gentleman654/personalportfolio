@@ -51,7 +51,7 @@ export default function Contact() {
         </a>
         <a
           className="btn btn-primary"
-          href="https://linkedin.com/in/yourprofile"
+          href="https://www.linkedin.com/in/manas-gandotra-627a69244/"
           target="_blank"
           rel="noopener"
         >
@@ -59,7 +59,7 @@ export default function Contact() {
         </a>
         <a
           className="btn btn-primary"
-          href="https://github.com/yourprofile"
+          href="https://github.com/gentleman654"
           target="_blank"
           rel="noopener"
         >
