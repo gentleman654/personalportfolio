@@ -91,7 +91,7 @@ export default function Home() {
             </div>
             <div className="col-12 col-md-4">
               <h3 className="h4 mb-1" style={{ color: '#fffffe' }}>
-                4+ Projects
+                10+ Projects
               </h3>
               <p className="text-secondary mb-0">Shipped to Production</p>
             </div>
