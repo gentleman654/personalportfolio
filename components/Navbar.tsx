@@ -3,7 +3,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-md bg-body border-bottom sticky-top">
+    <nav className="navbar navbar-expand-md border-bottom sticky-top navbar-dark">
       <div className="container">
         <Link className="navbar-brand fw-semibold" href="/">
           Manas

@@ -1,26 +1,179 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ========================================
+   COLOR CLASSIFICATION SYSTEM
+   ======================================== */
+
+/* Default Theme: DARK (Perfect as-is) */
+[data-bs-theme='dark'] {
+  /* Body & Layout */
+  --body-bg: #151519;
+
+  /* Text Classifications */
+  --heading-color: #fffffe; /* For: "Manas Gandotra", "2+ Years", stat headings, card titles */
+  --paragraph-color: #bbc3ce; /* For: descriptions under stats, card descriptions */
+  --text-color: #bbc3ce; /* General text */
+
+  /* Card Background */
+  --card-bg: #1a1a1e; /* Lighter shade of body background */
+
+  /* Button Colors */
+  --button-primary: #7f5af0;
+  --button-primary-hover: #9370f5;
+
+  /* Icons */
+  --icon-color: #7f5af0; /* Social media icons match buttons */
+}
+
+/* Light Theme: Custom Light Palette */
+[data-bs-theme='light'] {
+  /* Body & Layout */
+  --body-bg: #f5f5f7; /* Light gray background */
+
+  /* Text Classifications */
+  --heading-color: #151519; /* Dark headings for contrast */
+  --paragraph-color: #4a4a52; /* Medium gray for descriptions */
+  --text-color: #2c2c2e; /* Slightly lighter for general text */
+
+  /* Card Background */
+  --card-bg: #ffffff; /* White cards on light gray background */
+
+  /* Button Colors (same purple in both themes) */
+  --button-primary: #7f5af0;
+  --button-primary-hover: #6a47d4;
+
+  /* Icons */
+  --icon-color: #7f5af0; /* Purple icons in both themes */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ========================================
+   APPLY COLOR CLASSIFICATIONS
+   ======================================== */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--body-bg);
+  color: var(--text-color);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADING Classification: All main headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+  color: var(--heading-color) !important;
+}
+
+/* PARAGRAPH Classification: Descriptions and secondary text */
+.paragraph,
+.lead,
+p.text-secondary,
+.text-muted {
+  color: var(--paragraph-color) !important;
+}
+
+/* TEXT Classification: General body text */
+p {
+  color: var(--text-color);
+}
+
+/* CARD Classification */
+.card {
+  background-color: var(--card-bg) !important;
+  border-color: rgba(127, 90, 240, 0.2) !important;
+}
+
+/* BUTTON Classification */
+.btn-primary {
+  background-color: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--button-primary-hover) !important;
+  border-color: var(--button-primary-hover) !important;
+  color: #ffffff !important;
+}
+
+/* Outline Primary Buttons - Works same in both themes (inverse on hover) */
+.btn-outline-primary {
+  color: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: var(--button-primary) !important;
+  border-color: var(--button-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Outline Secondary Buttons - Dark Theme */
+[data-bs-theme='dark'] .btn-outline-secondary {
+  color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
+  background-color: transparent !important;
+}
+
+[data-bs-theme='dark'] .btn-outline-secondary:hover {
+  background-color: var(--card-bg) !important;
+  border-color: var(--text-color) !important;
+  color: var(--heading-color) !important;
+}
+
+/* Outline Secondary Buttons - Light Theme (Inverse effect) */
+[data-bs-theme='light'] .btn-outline-secondary {
+  color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
+  background-color: transparent !important;
+}
+
+[data-bs-theme='light'] .btn-outline-secondary:hover {
+  background-color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
+  color: var(--body-bg) !important;
+}
+
+/* ICON Classification */
+.icon,
+.social-icon {
+  color: var(--icon-color) !important;
+}
+
+/* NAVBAR & FOOTER - Theme-aware backgrounds */
+[data-bs-theme='dark'] .navbar {
+  background-color: #151519 !important;
+}
+
+[data-bs-theme='light'] .navbar {
+  background-color: #ffffff !important;
+}
+
+[data-bs-theme='dark'] .footer-dark {
+  background-color: #1a1a1e !important;
+}
+
+[data-bs-theme='light'] .footer-dark {
+  background-color: #ffffff !important;
+}
+
+[data-bs-theme='dark'] .navbar-brand {
+  color: #fffffe !important;
+}
+
+[data-bs-theme='light'] .navbar-brand {
+  color: #151519 !important;
 }

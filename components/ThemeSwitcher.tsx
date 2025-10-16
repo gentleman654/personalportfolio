@@ -4,12 +4,11 @@
 import { useState, useEffect } from 'react';
 
 export default function ThemeSwitcher() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true); // Default to dark theme
 
-  // Load theme from memory on mount and listen for system theme changes
+  // Load theme from memory on mount
   useEffect(() => {
     const saved = localStorage?.getItem('theme');
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     if (saved) {
       // User has manually set a theme preference
@@ -20,27 +19,9 @@ export default function ThemeSwitcher() {
         isDarkMode ? 'dark' : 'light'
       );
     } else {
-      // Default to system preference
-      const prefersDark = mediaQuery.matches;
-      setIsDark(prefersDark);
-      document.documentElement.setAttribute(
-        'data-bs-theme',
-        prefersDark ? 'dark' : 'light'
-      );
-
-      // Listen for system theme changes (only if user hasn't set a manual preference)
-      const handleChange = (e: MediaQueryListEvent) => {
-        const isDarkMode = e.matches;
-        setIsDark(isDarkMode);
-        document.documentElement.setAttribute(
-          'data-bs-theme',
-          isDarkMode ? 'dark' : 'light'
-        );
-      };
-
-      mediaQuery.addEventListener('change', handleChange);
-
-      return () => mediaQuery.removeEventListener('change', handleChange);
+      // Default to dark theme (not system preference)
+      setIsDark(true);
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
     }
   }, []);
 

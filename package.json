@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.6",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "@types/nodemailer": "^7.0.1",
     "bootstrap": "^5.3.8",
     "extern": "^1.0.0",
