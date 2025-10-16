@@ -2,6 +2,7 @@ import { projects } from '@/data/projects';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 
 export default async function ProjectPage({
   params,
@@ -20,9 +21,11 @@ export default async function ProjectPage({
         <h1 className="display-5 mb-3">{project.title}</h1>
         <p className="lead mb-4">{project.oneLiner}</p>
         {project.cover && (
-          <img
+          <Image
             src={project.cover}
             alt={project.title}
+            width={800}
+            height={400}
             className="mb-4 rounded shadow-sm"
             style={{ maxWidth: '100%', height: 'auto' }}
           />

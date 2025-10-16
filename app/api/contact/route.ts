@@ -55,13 +55,11 @@ export async function POST(request: Request) {
 
     const result = await collection.insertOne(messageDoc);
     
-    // eslint-disable-next-line no-console
     console.log('[contact] message stored with ID:', result.insertedId);
 
     // Send email notification to you
     if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD && process.env.CONTACT_DESTINATION) {
       try {
-        // eslint-disable-next-line no-console
         console.log('[contact] sending emails with Gmail SMTP...');
         console.log('[contact] Gmail user:', process.env.GMAIL_USER);
         console.log('[contact] destination:', process.env.CONTACT_DESTINATION);
@@ -88,7 +86,6 @@ export async function POST(request: Request) {
           `
         });
 
-        // eslint-disable-next-line no-console
         console.log('[contact] notification email sent successfully');
 
         // Send auto-reply to the submitter
@@ -109,15 +106,12 @@ export async function POST(request: Request) {
           `
         });
 
-        // eslint-disable-next-line no-console
         console.log('[contact] auto-reply email sent successfully');
       } catch (emailError) {
-        // eslint-disable-next-line no-console
         console.error('[contact] Gmail SMTP error:', emailError);
         // Don't fail the whole request if email fails, message is already saved
       }
     } else {
-      // eslint-disable-next-line no-console
       console.log('[contact] email sending skipped - missing Gmail SMTP config');
       console.log('[contact] Gmail user present:', !!process.env.GMAIL_USER);
       console.log('[contact] App password present:', !!process.env.GMAIL_APP_PASSWORD);
@@ -126,7 +120,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error('[contact] error handling request', err);
     
     if (err instanceof SyntaxError) {

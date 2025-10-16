@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export default function Resume() {
   const handleDownload = () => {
@@ -24,9 +25,9 @@ export default function Resume() {
           <button className="btn btn-primary" onClick={handleDownload}>
             Download PDF
           </button>
-          <a href="/" className="btn btn-outline-secondary">
+          <Link href="/" className="btn btn-outline-secondary">
             Back to Home
-          </a>
+          </Link>
         </div>
 
         <div className="resume-viewer">

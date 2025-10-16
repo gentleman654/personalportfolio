@@ -1,16 +1,19 @@
 // components/ProjectCard.tsx
 import type { Project } from '../data/projects';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="card h-100 shadow-sm border-0">
       {/* Project Image */}
       {project.cover && (
-        <img
+        <Image
           src={project.cover}
           className="card-img-top"
           alt={project.title}
+          width={400}
+          height={200}
           style={{ height: '200px', objectFit: 'cover' }}
         />
       )}

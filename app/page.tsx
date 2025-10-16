@@ -1,4 +1,3 @@
-import ThemeSwitcher from '../components/ThemeSwitcher';
 import { projects } from '../data/projects'; // 1. Import projects
 import ProjectCard from '../components/ProjectCard'; // 2. Import ProjectCard
 import Navbar from '@/components/Navbar';
