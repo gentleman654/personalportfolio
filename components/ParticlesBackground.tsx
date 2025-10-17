@@ -84,7 +84,7 @@ const ParticlesBackground = () => {
           density: {
             enable: true,
           },
-          value: 60,
+          value: 120,
         },
         opacity: {
           value: 0.6,

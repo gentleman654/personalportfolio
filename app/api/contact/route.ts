@@ -24,7 +24,7 @@ function isEmail(email: string) {
 
 export async function POST(request: Request) {
   const client = new MongoClient(process.env.MONGODB_URI || '');
-  
+
   try {
     const body: Body = await request.json();
 
@@ -50,20 +50,24 @@ export async function POST(request: Request) {
       email,
       message,
       createdAt: new Date(),
-      status: 'new'
+      status: 'new',
     };
 
     const result = await collection.insertOne(messageDoc);
-    
+
     console.log('[contact] message stored with ID:', result.insertedId);
 
     // Send email notification to you
-    if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD && process.env.CONTACT_DESTINATION) {
+    if (
+      process.env.GMAIL_USER &&
+      process.env.GMAIL_APP_PASSWORD &&
+      process.env.CONTACT_DESTINATION
+    ) {
       try {
         console.log('[contact] sending emails with Gmail SMTP...');
         console.log('[contact] Gmail user:', process.env.GMAIL_USER);
         console.log('[contact] destination:', process.env.CONTACT_DESTINATION);
-        
+
         // Send notification email to you
         await transporter.sendMail({
           from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
@@ -83,7 +87,7 @@ export async function POST(request: Request) {
               </div>
               <p style="font-size: 12px; color: #666;">Sent from your portfolio contact form</p>
             </div>
-          `
+          `,
         });
 
         console.log('[contact] notification email sent successfully');
@@ -103,7 +107,7 @@ export async function POST(request: Request) {
               <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
               <p style="font-size: 12px; color: #666;">This is an automated confirmation. Please do not reply to this email.</p>
             </div>
-          `
+          `,
         });
 
         console.log('[contact] auto-reply email sent successfully');
@@ -112,20 +116,28 @@ export async function POST(request: Request) {
         // Don't fail the whole request if email fails, message is already saved
       }
     } else {
-      console.log('[contact] email sending skipped - missing Gmail SMTP config');
+      console.log(
+        '[contact] email sending skipped - missing Gmail SMTP config'
+      );
       console.log('[contact] Gmail user present:', !!process.env.GMAIL_USER);
-      console.log('[contact] App password present:', !!process.env.GMAIL_APP_PASSWORD);
-      console.log('[contact] destination present:', !!process.env.CONTACT_DESTINATION);
+      console.log(
+        '[contact] App password present:',
+        !!process.env.GMAIL_APP_PASSWORD
+      );
+      console.log(
+        '[contact] destination present:',
+        !!process.env.CONTACT_DESTINATION
+      );
     }
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {
     console.error('[contact] error handling request', err);
-    
+
     if (err instanceof SyntaxError) {
       return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
     }
-    
+
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   } finally {
     await client.close();
