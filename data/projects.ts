@@ -61,7 +61,7 @@ export const projects: Project[] = [
       demo: 'https://crypto-alerts.com',
       code: 'https://github.com/manasgandy/crypto-tracker',
     },
-    cover: '/images/crypto-tracker.jpg',
+    // cover: '/images/crypto-tracker.jpg', // TODO: Add project screenshot
     featured: true,
   },
 ];

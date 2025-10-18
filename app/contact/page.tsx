@@ -1,8 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import dynamic from 'next/dynamic';
+
+// Lazy load components to improve initial load
+const Navbar = dynamic(() => import('@/components/Navbar'), {
+  ssr: true,
+});
+
+const Footer = dynamic(() => import('@/components/Footer'), {
+  loading: () => null,
+});
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -50,31 +58,28 @@ export default function Contact() {
         <p>
           I reply within 24–48h. You can use the form or reach out directly:
         </p>
-        <div className="d-flex gap-2 mb-4">
+        <div className="d-flex gap-2 mb-4 flex-wrap">
           <a
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-secondary btn-sm"
             href="mailto:manasgandotra@gmail.com"
           >
-            Email
+            📧 Email
           </a>
           <a
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm"
             href="https://ca.linkedin.com/in/manas-gandotra-627a69244"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
-            LinkedIn
+            💼 LinkedIn
           </a>
           <a
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm"
             href="https://github.com/gentleman654"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
-            GitHub
-          </a>
-          <a className="btn btn-outline-primary" href="/resume">
-            View Resume
+            💻 GitHub
           </a>
         </div>
         <form className="mb-4" autoComplete="off" onSubmit={handleSubmit}>
@@ -107,7 +112,14 @@ export default function Contact() {
             type="submit"
             disabled={status === 'sending'}
           >
-            {status === 'sending' ? 'Sending…' : 'Send'}
+            {status === 'sending' ? (
+              <>
+                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Sending…
+              </>
+            ) : (
+              'Send Message'
+            )}
           </button>
         </form>
 

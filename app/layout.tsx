@@ -16,6 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-bs-theme="dark">
+      <head>
+        {/* Devicon CDN for tech skill icons */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body>
         <ParticlesBackground />
         {children}

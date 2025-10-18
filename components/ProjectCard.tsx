@@ -3,7 +3,13 @@ import type { Project } from '../data/projects';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ 
+  project, 
+  priority = false 
+}: { 
+  project: Project;
+  priority?: boolean;
+}) {
   return (
     <div className="card h-100 shadow-sm border-0">
       {/* Project Image */}
@@ -15,6 +21,10 @@ export default function ProjectCard({ project }: { project: Project }) {
           width={400}
           height={200}
           style={{ height: '200px', objectFit: 'cover' }}
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
         />
       )}
 

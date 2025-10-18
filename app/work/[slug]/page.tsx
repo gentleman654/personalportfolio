@@ -1,8 +1,19 @@
+import dynamic from 'next/dynamic';
 import { projects } from '@/data/projects';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
+import compiledCases from '@/data/compiled-cases.json';
+
+// Lazy load Footer
+const Footer = dynamic(() => import('@/components/Footer'), {
+  loading: () => null,
+});
+
+// Generate static params for all projects
+export async function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
 
 export default async function ProjectPage({
   params,
@@ -13,6 +24,9 @@ export default async function ProjectPage({
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) return notFound();
+
+  // Get pre-compiled HTML for this case study
+  const caseStudyHtml = (compiledCases as Record<string, string>)[project.slug] || null;
 
   return (
     <>
@@ -28,6 +42,7 @@ export default async function ProjectPage({
             height={400}
             className="mb-4 rounded shadow-sm"
             style={{ maxWidth: '100%', height: 'auto' }}
+            priority
           />
         )}
         <div className="mb-4">
@@ -73,6 +88,22 @@ export default async function ProjectPage({
             </a>
           )}
         </div>
+
+        {/* Case Study Section - Render pre-compiled HTML if exists */}
+        {caseStudyHtml ? (
+          <section 
+            className="markdown-body mt-5"
+            dangerouslySetInnerHTML={{ __html: caseStudyHtml }}
+          />
+        ) : (
+          // Fallback when no case study exists
+          <section className="mt-5">
+            <h2 className="h3 mb-3">Case Study</h2>
+            <p className="text-body-secondary">
+              Detailed case study documentation coming soon for {project.title}.
+            </p>
+          </section>
+        )}
       </main>
       <Footer />
     </>

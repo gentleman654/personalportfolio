@@ -1,7 +1,12 @@
+import dynamic from 'next/dynamic';
 import { projects } from '../data/projects'; // 1. Import projects
 import ProjectCard from '../components/ProjectCard'; // 2. Import ProjectCard
 import Navbar from '@/components/Navbar';
-import Footer from '../components/Footer';
+
+// Lazy load Footer since it's below the fold
+const Footer = dynamic(() => import('../components/Footer'), {
+  loading: () => null,
+});
 
 export default function Home() {
   return (
@@ -68,38 +73,90 @@ export default function Home() {
               </svg>
             </a>
           </div>
-
-          {/* CTA Buttons */}
-          <div className="d-flex flex-column flex-sm-row gap-3">
-            <a className="btn btn-primary btn-lg" href="/resume" rel="noopener">
-              View Resume
-            </a>
-            <a className="btn btn-outline-secondary btn-lg" href="/contact">
-              Contact Me
-            </a>
-          </div>
         </section>
-        {/* Quick Stats */}
-        <section className="py-4">
-          <div className="row g-4 text-center">
-            <div className="col-12 col-md-4">
-              <h3 className="h4 mb-1" style={{ color: '#fffffe' }}>
-                2+ Years
-              </h3>
-              <p className="text-secondary mb-0">Full-stack Development</p>
-            </div>
-            <div className="col-12 col-md-4">
-              <h3 className="h4 mb-1" style={{ color: '#fffffe' }}>
-                10+ Projects
-              </h3>
-              <p className="text-secondary mb-0">Shipped to Production</p>
-            </div>
-            <div className="col-12 col-md-4">
-              <h3 className="h4 mb-1" style={{ color: '#fffffe' }}>
-                {'< 2s Load'}
-              </h3>
-              <p className="text-secondary mb-0">Average Page Speed</p>
-            </div>
+        {/* Skills Section */}
+        <section className="py-4 text-center">
+          <h2 className="h4 mb-3" style={{ color: '#fffffe' }}>Skills</h2>
+          <div className="d-flex flex-wrap gap-2 align-items-center justify-content-center">
+            {/* Frontend */}
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-react-original colored" style={{ fontSize: '1.2rem' }}></i>
+              React
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-nextjs-plain" style={{ fontSize: '1.2rem' }}></i>
+              Next.js
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-typescript-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              TypeScript
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-javascript-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              JavaScript
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-html5-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              HTML5
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-css3-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              CSS3
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-bootstrap-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              Bootstrap
+            </span>
+            
+            {/* Backend */}
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-nodejs-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              Node.js
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-python-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              Python
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-fastapi-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              FastAPI
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-cplusplus-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              C++
+            </span>
+            
+            {/* Databases */}
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-mongodb-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              MongoDB
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-postgresql-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              PostgreSQL
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-redis-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              Redis
+            </span>
+            
+            {/* Tools & DevOps */}
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-git-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              Git
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-github-original" style={{ fontSize: '1.2rem' }}></i>
+              GitHub
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-docker-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              Docker
+            </span>
+            <span className="badge bg-body-secondary text-body-emphasis skill-badge d-flex align-items-center gap-1 py-2 px-3">
+              <i className="devicon-vscode-plain colored" style={{ fontSize: '1.2rem' }}></i>
+              VS Code
+            </span>
           </div>
         </section>
         {/* Projects Section */}
@@ -109,9 +166,9 @@ export default function Home() {
           </h2>
           <div className="row g-4">
             {/* 3. Render first 3 projects as cards */}
-            {projects.slice(0, 3).map((project) => (
+            {projects.slice(0, 3).map((project, index) => (
               <div className="col-12 col-md-6 col-lg-4" key={project.slug}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} priority={index === 0} />
               </div>
             ))}
           </div>

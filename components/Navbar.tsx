@@ -9,8 +9,14 @@ export default function Navbar() {
           Manas
         </Link>
         <div className="d-flex gap-2">
+          <Link
+            className="btn btn-outline-secondary btn-sm"
+            href="/contact"
+          >
+            Contact
+          </Link>
           <a
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm"
             href="/resume.pdf"
             target="_blank"
             rel="noopener"
