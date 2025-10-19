@@ -1,7 +1,10 @@
 // components/ProjectCard.tsx
+'use client';
+
 import type { Project } from '../data/projects';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function ProjectCard({ 
   project, 
@@ -10,8 +13,46 @@ export default function ProjectCard({
   project: Project;
   priority?: boolean;
 }) {
+  const router = useRouter();
+
+  // Determine the primary link: live demo > case study
+  const primaryLink = project.links?.demo || `/work/${project.slug}`;
+  const isExternalLink = project.links?.demo ? true : false;
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Don't navigate if clicking on buttons or links
+    const target = e.target as HTMLElement;
+    if (
+      target.tagName === 'A' || 
+      target.tagName === 'BUTTON' || 
+      target.closest('a') || 
+      target.closest('button')
+    ) {
+      return;
+    }
+
+    // Navigate to primary link
+    if (isExternalLink) {
+      window.open(primaryLink, '_blank', 'noopener,noreferrer');
+    } else {
+      router.push(primaryLink);
+    }
+  };
+
   return (
-    <div className="card h-100 shadow-sm border-0">
+    <div 
+      className="card h-100 shadow-sm border-0" 
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s' }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '';
+      }}
+    >
       {/* Project Image */}
       {project.cover && (
         <Image
