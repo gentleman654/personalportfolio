@@ -25,7 +25,7 @@ export default async function ProjectPage({
 
   if (!project) return notFound();
 
-  // Get pre-compiled HTML for this case study
+  //  pre-compiled HTML for  case study
   const caseStudyHtml = (compiledCases as Record<string, string>)[project.slug] || null;
 
   return (

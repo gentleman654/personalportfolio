@@ -23,8 +23,6 @@ export default function ProjectCard({
           style={{ height: '200px', objectFit: 'cover' }}
           priority={priority}
           loading={priority ? undefined : "lazy"}
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
         />
       )}
 

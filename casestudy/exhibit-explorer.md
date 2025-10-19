@@ -9,12 +9,12 @@ A modern web application for exploring The Metropolitan Museum of Art's collecti
 
 ## 🎯 Key Features
 
-- 🔍 **Smart Search** - Real-time search across 470,000+ artworks from the MET's public API
-- ⭐ **Favorites System** - Save and manage your favorite exhibits with localStorage persistence
-- 🖼️ **Rich Details** - View high-resolution images, artist information, dating, medium, and dimensions
-- 📱 **Responsive Design** - Seamless experience across desktop, tablet, and mobile devices
-- ⚡ **Performance Optimized** - Lighthouse score of 99/100 with lazy-loading and caching
-- 🎨 **Modern UI** - Clean interface built with Bootstrap 5 and custom theming
+- **Smart Search** - Real-time search across 470,000+ artworks from the MET's public API
+- **Favorites System** - Save and manage your favorite exhibits with localStorage persistence
+- **Rich Details** - View high-resolution images, artist information, dating, medium, and dimensions
+- **Responsive Design** - Seamless experience across desktop, tablet, and mobile devices
+- **Performance Optimized** - Lighthouse score of 99/100 with lazy-loading and caching
+- **Modern UI** - Clean interface built with Bootstrap 5 and custom theming
 
 ## 🛠️ Tech Stack
 
@@ -65,7 +65,7 @@ app/
 - **Best Practices**: 100/100
 - **SEO**: 100/100
 
-## 💡 Technical Challenges & Solutions
+## Technical Challenges & Solutions
 
 ### Challenge 1: API Rate Limiting
 
@@ -129,7 +129,7 @@ export const FavoritesProvider = ({ children }) => {
 - **Zero backend** infrastructure needed (static deployment)
 - **< 2s** initial page load time
 
-## 🧪 Testing Approach
+## Testing Approach
 
 ### Manual Testing
 
@@ -146,7 +146,7 @@ export const FavoritesProvider = ({ children }) => {
 4. Navigate to favorites page → Display saved items
 5. Remove from favorites → Update localStorage
 
-## 🎓 Key Learnings
+## Key Learnings
 
 - **API Integration** - Handling external APIs with no authentication
 - **State Management** - Using React Context for global state across routes
@@ -154,13 +154,13 @@ export const FavoritesProvider = ({ children }) => {
 - **Performance** - Image optimization techniques for large media files
 - **Next.js Features** - App Router, dynamic routes, and metadata API
 
-## 🔗 Links
+## Links
 
 - **Live Demo**: [View Application](https://exhibit-explorer.vercel.app)
 - **Source Code**: [GitHub Repository](https://github.com/yourusername/exhibit-explorer)
 - **API Documentation**: [MET Museum API](https://metmuseum.github.io/)
 
-## 📈 Future Enhancements
+## Future Enhancements
 
 - [ ] Add advanced filters (year range, medium, department)
 - [ ] Implement infinite scroll for search results
@@ -171,6 +171,6 @@ export const FavoritesProvider = ({ children }) => {
 
 ---
 
-**Built by Manas Gandotra** • [LinkedIn](https://ca.linkedin.com/in/manas-gandotra-627a69244) • [GitHub](https://github.com/yourusername)
+**Built by Manas Gandotra** • [LinkedIn](https://ca.linkedin.com/in/manas-gandotra-627a69244) • [GitHub](https://github.com/gentleman)
 
-⭐ **Enjoyed this project? Star it on GitHub!**
+ **Enjoyed this project? Star it on GitHub!**

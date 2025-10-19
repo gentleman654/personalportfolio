@@ -4,9 +4,9 @@
 import { useState, useEffect } from 'react';
 
 export default function ThemeSwitcher() {
-  const [isDark, setIsDark] = useState(true); // Default to dark theme
+  const [isDark, setIsDark] = useState(true); // Initial state
 
-  // Load theme from memory on mount
+  // Load theme from memory or system preference on mount
   useEffect(() => {
     const saved = localStorage?.getItem('theme');
 
@@ -19,9 +19,13 @@ export default function ThemeSwitcher() {
         isDarkMode ? 'dark' : 'light'
       );
     } else {
-      // Default to dark theme (not system preference)
-      setIsDark(true);
-      document.documentElement.setAttribute('data-bs-theme', 'dark');
+      // Check system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDark(prefersDark);
+      document.documentElement.setAttribute(
+        'data-bs-theme',
+        prefersDark ? 'dark' : 'light'
+      );
     }
   }, []);
 
