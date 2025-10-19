@@ -6,9 +6,15 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-md border-bottom sticky-top navbar-dark">
       <div className="container">
         <Link className="navbar-brand fw-semibold" href="/">
-          Manas
+          Home
         </Link>
         <div className="d-flex gap-2">
+          <Link
+            className="btn btn-outline-secondary btn-sm"
+            href="/about"
+          >
+            About
+          </Link>
           <Link
             className="btn btn-outline-secondary btn-sm"
             href="/contact"

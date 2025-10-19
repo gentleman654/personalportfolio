@@ -6,27 +6,16 @@ import { useState, useEffect } from 'react';
 export default function ThemeSwitcher() {
   const [isDark, setIsDark] = useState(true); // Initial state
 
-  // Load theme from memory or system preference on mount
+  // Load theme from memory or default to dark on mount
   useEffect(() => {
     const saved = localStorage?.getItem('theme');
-
-    if (saved) {
-      // User has manually set a theme preference
-      const isDarkMode = saved === 'dark';
-      setIsDark(isDarkMode);
-      document.documentElement.setAttribute(
-        'data-bs-theme',
-        isDarkMode ? 'dark' : 'light'
-      );
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDark(prefersDark);
-      document.documentElement.setAttribute(
-        'data-bs-theme',
-        prefersDark ? 'dark' : 'light'
-      );
-    }
+    const isDarkMode = saved ? saved === 'dark' : true; // Always default to dark
+    
+    setIsDark(isDarkMode);
+    document.documentElement.setAttribute(
+      'data-bs-theme',
+      isDarkMode ? 'dark' : 'light'
+    );
   }, []);
 
   const toggleTheme = () => {

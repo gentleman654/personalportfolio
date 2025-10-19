@@ -28,7 +28,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 const saved = localStorage.getItem('theme');
-                const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                const theme = saved || 'dark';
                 document.documentElement.setAttribute('data-bs-theme', theme);
               })();
             `,
