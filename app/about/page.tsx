@@ -97,7 +97,7 @@ export default function AboutPage() {
             <TypewriterHeading text="Who" />
             <SlideInContent delay={0.4}>
               <p className="lead" style={{ color: '#bbc3ce', fontSize: '1.25rem' }}>
-                I'm Manas. I don't just write code, I build digital experiences. 
+                I&apos;m Manas. I don&apos;t just write code, I build digital experiences. 
                 My passion lies in transforming complex problems into elegant, 
                 user-friendly solutions that just <em>work</em>.
               </p>
@@ -111,7 +111,7 @@ export default function AboutPage() {
             <TypewriterHeading text="What" />
             <SlideInContent delay={0.5}>
               <p className="lead" style={{ color: '#bbc3ce', fontSize: '1.25rem' }}>
-                I'm a Full-Stack Developer, bridging the gap between a beautiful UI 
+                I&apos;m a Full-Stack Developer, bridging the gap between a beautiful UI 
                 and a powerful, scalable backend. My toolkit is modern and robust, from 
                 React to FastAPI, MongoDB to Docker, allowing me to architect and deliver 
                 complete applications from start to finish.
@@ -126,7 +126,7 @@ export default function AboutPage() {
             <TypewriterHeading text="How" />
             <SlideInContent delay={0.4}>
               <p className="lead mb-4" style={{ color: '#bbc3ce', fontSize: '1.25rem' }}>
-                I'm a software engineer. I ship across UI, backends, systems, and  AI.
+                I&apos;m a software engineer. I ship across UI, backends, systems, and  AI.
               </p>
             </SlideInContent>
 
@@ -152,7 +152,7 @@ export default function AboutPage() {
                   <h5 style={{ color: '#7f5af0' }}>AI with receipts</h5>
                   <p style={{ color: '#bbc3ce', fontSize: '1.25rem' }}>
                     Building a RAG pipeline the boring‑reliable way: clean chunking, quality embeddings, constrained prompts,
-                    automatic evals, guardrails, and latency/cost budgets. Hallucinations aren't invited.
+                    automatic evals, guardrails, and latency/cost budgets. Hallucinations aren&apos;t invited.
                   </p>
                 </div>
 
@@ -160,14 +160,14 @@ export default function AboutPage() {
                   <h5 style={{ color: '#7f5af0' }}>Reliability {'>'} vibes</h5>
                   <p style={{ color: '#bbc3ce', fontSize: '1.25rem' }}>
                     If it can fail, it will. I add retries, idempotency keys, structured logs, and dead‑simple fallbacks.
-                    Shipping is a feature; debugging at 2am isn't.
+                    Shipping is a feature; debugging at 2am isn&apos;t.
                   </p>
                 </div>
 
                 <div className="mb-4">
                   <h5 style={{ color: '#7f5af0' }}>Product taste</h5>
                   <p style={{ color: '#bbc3ce', fontSize: '1.25rem' }}>
-                    Clear copy, accessible interactions, zero friction. If my mom can't use it, it ships later. If it's fast
+                    Clear copy, accessible interactions, zero friction. If my mom can&apos;t use it, it ships later. If it&apos;s fast
                     and useful, it feels delightful.
                   </p>
                 </div>
