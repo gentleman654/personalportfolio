@@ -11,6 +11,7 @@ export type Project = {
   };
   cover?: string;
   featured?: boolean;
+  hideDetails?: boolean; // Hide metrics and case study button
 };
 
 export const projects: Project[] = [
@@ -55,13 +56,10 @@ export const projects: Project[] = [
     title: 'Crypto Price Alert System',
     oneLiner:
       'Real-time cryptocurrency tracking with smart alerts and portfolio management.',
-    metrics: ['99.9% uptime', '50ms avg response', '10K+ price alerts sent'],
+    metrics: [],
     stack: ['Python', 'FastAPI', 'Redis', 'WebSocket', 'Docker'],
-    links: {
-      demo: 'https://crypto-alerts.com',
-      code: 'https://github.com/manasgandy/crypto-tracker',
-    },
-    // cover: '/images/crypto-tracker.jpg', // TODO: Add project screenshot
+    cover: '/images/coming-soon.svg',
     featured: true,
+    hideDetails: true,
   },
 ];
